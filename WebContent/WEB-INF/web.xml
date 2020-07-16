@@ -15,4 +15,115 @@
  	<session-config>
  		<session-timeout>60</session-timeout>
  	</session-config>
+ 	
+ 	<jsp-config>
+ 		<jsp-property-group>
+ 			<url-pattern>/</url-pattern>
+ 			<include-coda>book/data.jspf</include-coda>
+ 		</jsp-property-group>
+ 	</jsp-config>
+ 	
+ 	<servlet>
+ 		<servlet-name>servletEx1</servlet-name>
+ 		<servlet-class>chap17.ServletEx1</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet>
+ 		<servlet-name>now</servlet-name>
+ 		<servlet-class>chap17.NowServlet</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>now</servlet-name>
+ 		<url-pattern>/now</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet-mapping> 	
+ 		<servlet-name>servletEx1</servlet-name>
+ 		<url-pattern>/servletEx1</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 		<servlet-name>Serlvet1</servlet-name>
+ 		<servlet-class>chap17.path.UrlPathEx1</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>Serlvet1</servlet-name>
+ 		<url-pattern>/Servlet1</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 		<servlet-name>Servlet2</servlet-name>
+ 		<servlet-class>chap17.path.UrlPathEx2</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet>
+ 		<servlet-name>Servlet3</servlet-name>
+ 		<servlet-class>chap17.path.UrlPathEx3</servlet-class>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>Serlvet1</servlet-name>
+ 		<url-pattern>*.do</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>Servlet2</servlet-name>
+ 		<!-- 같은 서블렛에 다양한 경로를 줄 수 있다.  -->
+ 		<url-pattern>/foo/bar</url-pattern>
+ 		<url-pattern>/poo/var</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>Servlet3</servlet-name>
+ 		<!-- <url-pattern>/poo/var</url-pattern>  같은경로의 다른 서블릿을 둘 수 없다.-->
+ 		<url-pattern>/foo/*</url-pattern>
+ 	</servlet-mapping>
+ 	
+ 	<servlet>
+ 		<servlet-name>initMethod1</servlet-name>
+ 		<servlet-class>chap17.initMethodEx1</servlet-class>
+ 		<load-on-startup>1</load-on-startup> <!-- 톰캣이 가동하자마자 servlet이 시작하게 하게끔 하는 명령어임.  몸통에는 순서를 정한다. -->
+ 	</servlet>
+ 	
+ 	<servlet>
+ 		<servlet-name>initMethod2</servlet-name>
+ 		<servlet-class>chap17.initMethodEx2</servlet-class>
+ 		<load-on-startup>2</load-on-startup> <!-- 톰캣이 가동하자마자 servlet이 시작하게 하게끔 하는 명령어임.  몸통에는 순서를 정한다. -->
+ 	</servlet>
+ 	
+ 	<servlet>
+ 		<servlet-name>initparam servlet</servlet-name>
+ 		<servlet-class>chap17.InitParamServletEx1</servlet-class>
+ 		<init-param>
+ 			<param-name>name1</param-name> <!-- 미리 정의된 값을 서블릿에서 읽어낼 수 있도록 한다. -->
+ 			<param-value>value1</param-value>
+ 		</init-param>		
+ 		<init-param>
+ 			<param-name>name4</param-name>
+ 			<param-value>value4</param-value>
+ 		</init-param>
+ 		
+ 		<init-param>
+ 			<param-name>jdbcUrl1</param-name>
+ 			<param-value>
+ 			jdbc:mysql://localhost:3306/chap14?characterEncoding=utf8&amp;
+ 			</param-value>
+ 		</init-param>
+ 		
+ 		<init-param>
+ 			<param-name>jdbcUrl2</param-name>
+ 			<param-value>
+ 			jdbc:mysql://localhost:3306/chap14?characterEncoding=utf8&amp;name=p
+ 			</param-value>
+ 		</init-param>
+ 	</servlet>
+ 	
+ 	<servlet-mapping>
+ 		<servlet-name>initparam servlet</servlet-name>
+ 		<url-pattern>/InitParamEX1</url-pattern> <!-- web.xml에 정의된 서블릿은 web.xml에서 맵핑해야 InitParam을 가져올 수 있다. -->
+ 	</servlet-mapping>
+ 	
 </web-app>
